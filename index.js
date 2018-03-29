@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.get('/remove/:id', (req, res) => {
     const { id } = req.params;
-    const index = singers.findIndex(singer => +singer.id === id);
+    const index = singers.findIndex(singer => singer.id === +id);
     if (index === -1) return res.send('Khong tim thay');
     singers.splice(index, 1);
     res.redirect('/');
@@ -25,8 +25,10 @@ app.get('/remove/:id', (req, res) => {
 app.get('/add', (req, res) => res.render('add'));
 
 app.post('/add', (req, res) => {
-    console.log(req.body);
-    res.send('Da nhan duoc.');
+    const { link, name, image } = req.body;
+    const singer = new Singer(name, link, image);
+    singers.push(singer);
+    res.redirect('/');
 });
 
 app.listen(3000, () => console.log('Server started!'));
