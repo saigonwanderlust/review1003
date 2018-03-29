@@ -24,6 +24,16 @@ app.get('/remove/:id', (req, res) => {
 
 app.get('/add', (req, res) => res.render('add'));
 
+app.get('/update/:id', (req, res) => {
+    const singer = singers.find(s => s.id === +req.params.id);
+    if (!singer) return res.send('Khong tim thay');
+    res.render('update', { singer });
+});
+
+app.post('/update/:id', (req, res) => {
+
+});
+
 app.post('/add', (req, res) => {
     const { link, name, image } = req.body;
     const singer = new Singer(name, link, image);
