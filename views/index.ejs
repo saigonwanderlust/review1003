@@ -20,17 +20,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ngọc Dolil</td>
-            <td><img src="https://zmp3-photo.zadn.vn/thumb/240_240/avatars/b/b/bbbee024a18e075d34a14159585e0b53_1518238323.png" alt=""></td>
-            <td><a href="https://mp3.zing.vn/nghe-si/Ngoc-Dolil">Ngọc Dolil</a></td>
-            <td>
-                <a href="/remove">Remove</a>
-                <br>
-                <a href="/remove">Update</a>
-            </td>
-          </tr>
+          <% singers.forEach((singer, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= singer.name %></td>
+              <td><img src="<%= singer.image %>" alt=""></td>
+              <td><a href="<%= singer.link %>"><%= singer.name %></a></td>
+              <td>
+                  <a href="/remove">Remove</a>
+                  <br>
+                  <a href="/remove">Update</a>
+              </td>
+            </tr>
+          <% }); %>
         </tbody>
       </table>
       <a href="/add">Add new singer</a>
